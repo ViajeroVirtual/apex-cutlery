@@ -1,0 +1,106 @@
+@import "tailwindcss";
+
+@theme {
+  --color-tactical-dark: #09090b; /* Zinc 950 */
+  --color-tactical-panel: #18181b; /* Zinc 900 */
+  --color-tactical-accent: #dc2626; /* Red 600 */
+  --color-tactical-accentHover: #b91c1c; /* Red 700 */
+  --color-tactical-gray: #a1a1aa; /* Zinc 400 */
+  --font-sans: 'Inter', sans-serif;
+  --font-display: 'Montserrat', sans-serif;
+}
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    background-color: var(--color-tactical-dark);
+    color: #f8fafc; /* Slate 50 */
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  ::selection {
+    background-color: var(--color-tactical-accent);
+    color: #fff;
+  }
+
+/* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-tactical-dark);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #334155; /* Slate 700 */
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-tactical-accent);
+  }
+
+  /* Premium Form Controls */
+  select, input, textarea {
+    background-color: var(--color-tactical-panel);
+    border: 1px solid #334155;
+    color: #fff;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+  }
+  
+  select:focus, input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--color-tactical-accent);
+    box-shadow: 0 0 0 1px var(--color-tactical-accent);
+  }
+
+  /* Ensures dropdown options are dark */
+  select option {
+    background-color: var(--color-tactical-panel);
+    color: #ffffff;
+    padding: 10px;
+  }
+}
+
+@layer utilities {
+  .bg-texture {
+    position: relative;
+  }
+  .bg-texture::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .content-layer {
+    position: relative;
+    z-index: 10;
+  }
+
+  .fade-in {
+    animation: fadeIn 0.4s ease-in-out forwards;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
