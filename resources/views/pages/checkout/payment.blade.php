@@ -24,7 +24,7 @@
             </div>
         </div>
 
-        <form action="{{ route('checkout.process', $product['id']) }}" method="POST">
+        <form action="{{ route('checkout.process') }}" method="POST">
             @csrf
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                 <!-- Direccion -->
@@ -76,13 +76,13 @@
 
                     <div class="mt-8 bg-zinc-900 p-4 border border-zinc-800 flex justify-between items-center rounded-sm">
                         <span class="text-zinc-400 uppercase font-bold tracking-widest text-sm">Total a pagar:</span>
-                        <span class="text-2xl font-bold text-tactical-accent">{{ number_format($product['price'], 2) }}€</span>
+                        <span class="text-2xl font-bold text-tactical-accent">{{ number_format($total, 2) }}€</span>
                     </div>
                 </div>
             </div>
 
             <div class="flex justify-between items-center">
-                <a href="{{ route('checkout.cart', $product['id']) }}" class="text-zinc-400 hover:text-white uppercase text-sm font-bold tracking-widest transition-colors"><i class="fa-solid fa-arrow-left mr-2"></i> Volver al Resumen</a>
+                <a href="{{ route('cart.view') }}" class="text-zinc-400 hover:text-white uppercase text-sm font-bold tracking-widest transition-colors"><i class="fa-solid fa-arrow-left mr-2"></i> Volver al Resumen</a>
                 <button type="submit" class="bg-tactical-accent hover:bg-tactical-accentHover text-white font-bold py-3 px-8 uppercase tracking-widest transition-all duration-300 rounded-sm">
                     Confirmar Transmisión <i class="fa-solid fa-satellite-dish ml-2"></i>
                 </button>
